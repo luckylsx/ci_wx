@@ -91,7 +91,6 @@ class Wechat {
         if(isset($_GET['encrypt_type']) && $_GET['encrypt_type'] == 'aes'){
             self::$msgSafeMode = true;
         }
-        var_dump($token);
         //参数验证
         if(self::$msgSafeMode){
             if(empty($key) || empty($appid)){
