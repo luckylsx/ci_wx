@@ -12,12 +12,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 //namespace Com;
-include_once './WechatCrypt.php';
+include_once './application/libraries/WechatCrypt.php';
 // use Com\WechatCrypt;
 
 //支持在非ThinkPHP环境下使用
 defined('NOW_TIME') || define('NOW_TIME', $_SERVER['REQUEST_TIME']);
 defined('IS_GET')   || define('IS_GET',   $_SERVER['REQUEST_METHOD'] == 'GET');
+
 
 class Wechat {
     /**
@@ -81,12 +82,16 @@ class Wechat {
      * @param string $appid 微信APPID (安全模式和兼容模式有效)
      * @param string $key   消息加密KEY (EncodingAESKey)
      */
-    public function __construct($token, $appid = '', $key = ''){
+    //$token, $appid = '', $key = ''
+    public function __construct($data){
+        $token = isset($data['token'])&&!empty($data['token'])?$data['token']:"";
+        $appid = isset($data['appid'])&&!empty($data['appid'])?$data['appid']:"";
+        $key = isset($data['key'])&&!empty($data['key'])?$data['key']:"";
         //设置安全模式
         if(isset($_GET['encrypt_type']) && $_GET['encrypt_type'] == 'aes'){
             self::$msgSafeMode = true;
         }
-
+        var_dump($token);
         //参数验证
         if(self::$msgSafeMode){
             if(empty($key) || empty($appid)){
