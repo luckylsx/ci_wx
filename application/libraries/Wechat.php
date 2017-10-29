@@ -83,10 +83,10 @@ class Wechat {
      * @param string $key   消息加密KEY (EncodingAESKey)
      */
     //$token, $appid = '', $key = ''
-    public function __construct($data){
+    public function __construct($data,$appid='',$key=""){
         $token = isset($data['token'])&&!empty($data['token'])?$data['token']:"";
-        $appid = isset($data['appid'])&&!empty($data['appid'])?$data['appid']:"";
-        $key = isset($data['key'])&&!empty($data['key'])?$data['key']:"";
+        //$appid = isset($data['appid'])&&!empty($data['appid'])?$data['appid']:"";
+        //$key = isset($data['key'])&&!empty($data['key'])?$data['key']:"";
         //设置安全模式
         if(isset($_GET['encrypt_type']) && $_GET['encrypt_type'] == 'aes'){
             self::$msgSafeMode = true;
