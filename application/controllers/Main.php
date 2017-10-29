@@ -8,7 +8,7 @@ class Main extends CI_Controller
 	const TOKEN = "luckylsx";
 	public function index(){
 		$this->load->library("Wechat",['token'=>self::TOKEN]);
-		$data = $this->Wechat->response();
+		$data = $this->Wechat->request();
 		if ($data && is_array($data)) {
 			switch ($data['MsgType']) {
 				case 'text':
