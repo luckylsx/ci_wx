@@ -122,7 +122,7 @@ class Wechat {
     private function init(){
         $xml  = file_get_contents("php://input");
         $data = self::xml2data($xml);
-
+        file_put_contents("log.txt",$data,FILE_APPEND);
         //安全模式 或兼容模式
         if(self::$msgSafeMode){
             if(isset($data['MsgType'])){
