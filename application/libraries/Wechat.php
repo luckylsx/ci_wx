@@ -132,7 +132,6 @@ class Wechat {
                 $data = self::extract($data['Encrypt']);
             }
         }
-        file_put_contents("log.txt",$data,FILE_APPEND);
         $this->data = $data;
     }
 
