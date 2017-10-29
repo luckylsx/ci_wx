@@ -8,7 +8,7 @@ class Main extends CI_Controller
 	const TOKEN = "luckylsx";
 	public function index(){
 		$this->load->library("wechat",['token'=>self::TOKEN]);
-		$data = $this->Wechat->request();
+		$data = $this->wechat->request();
 		file_put_contents("log.txt",$data,FILE_APPEND);
 		//$this->logger($data);
 		if ($data && is_array($data)) {
