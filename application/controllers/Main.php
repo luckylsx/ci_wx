@@ -27,6 +27,7 @@ class Main extends CI_Controller
 	 * 回复文本消息
 	 */
 	public function Text($data){
+		$this->load->library("wechat",['token'=>self::TOKEN]);
 		if (strstr($data['Content'], '文本')) {
 			$text = "我正在使用ci框架开发微信";
 			$this->logger("发送消息：\n".$text);
